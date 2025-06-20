@@ -3,7 +3,7 @@ import { UserPlus, Copy, Send } from "lucide-react";
 import { TonConnectUI } from "@tonconnect/ui";
 
 const connector = new TonConnectUI({
-  manifestUrl: "https://your-domain.com/tonconnect-manifest.json", // 👈 Change this to your real manifest
+  manifestUrl: "https://olive-fashionable-mule-815.mypinata.cloud/ipfs/bafkreibeyicm22fqvs3gft7os527dwfkptxy35h57j2gk7jk74btracggq", // 👈 Change this to your real manifest
 });
 
 function App() {
@@ -46,6 +46,9 @@ function App() {
   const handleConnect = () => {
     connector.openModal();
   };
+  const handleDisconnect = ()=>{  
+    connector.disconnect();
+  }
 
   return (
     <div
@@ -73,12 +76,13 @@ function App() {
 
         {/* Connect Wallet */}
         {walletAddress ? (
-          <div className="w-full py-3 rounded-xl bg-white text-center font-semibold text-purple-700 shadow-lg">
+          <div className="w-full py-3 rounded-xl bg-white text-center font-semibold text-purple-700 shadow-lg" onClick={handleDisconnect}>
             {walletAddress.slice(0, 6)}...{walletAddress.slice(-4)}
           </div>
         ) : (
           <button
-            onClick={handleConnect}
+            onClick={
+              handleConnect}
             className="w-full py-3 rounded-xl text-white font-semibold bg-gradient-to-r from-pink-500 to-purple-500 shadow-lg"
           >
             Connect wallet
