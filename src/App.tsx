@@ -3,7 +3,7 @@ import { UserPlus, Copy, Send } from "lucide-react";
 import { TonConnectUI } from "@tonconnect/ui";
 
 const connector = new TonConnectUI({
-  manifestUrl: "https://olive-fashionable-mule-815.mypinata.cloud/ipfs/bafkreibeyicm22fqvs3gft7os527dwfkptxy35h57j2gk7jk74btracggq", // 👈 Change this to your real manifest
+  manifestUrl: "https://olive-fashionable-mule-815.mypinata.cloud/ipfs/bafkreibeyicm22fqvs3gft7os527dwfkptxy35h57j2gk7jk74btracggq",
 });
 
 function App() {
@@ -32,7 +32,6 @@ function App() {
     return () => clearInterval(timer);
   }, []);
 
-  // Check for wallet connection
   useEffect(() => {
     connector.onStatusChange((wallet) => {
       if (wallet?.account?.address) {
@@ -43,54 +42,60 @@ function App() {
     });
   }, []);
 
-  const handleConnect = () => {
-    connector.openModal();
-  };
-  const handleDisconnect = ()=>{  
-    connector.disconnect();
-  }
+  const handleConnect = () => connector.openModal();
+  const handleDisconnect = () => connector.disconnect();
 
   return (
     <div
-      className="min-h-screen flex flex-col justify-between items-center bg-cover bg-center py-8 px-4"
-      style={{ backgroundImage: "url('/Background.jpg')" }}
+      className="min-h-screen flex flex-col justify-between items-center bg-cover bg-center bg-no-repeat py-6 px-4"
+      style={{ backgroundImage: "url('/Background1.jpg')" }}
     >
-      {/* Timer */}
-      <div className="mt-[14.5rem] flex space-x-4">
-        <TimeBox value={timeLeft.days} label="days" />
-        <TimeBox value={timeLeft.hours} label="hours" />
-        <TimeBox value={timeLeft.minutes} label="min" />
-        <TimeBox value={timeLeft.seconds} label="sec" />
+      {/* Logo */}
+      <div className="flex flex-col items-center">
+        <img
+          src="/logoabovetimer.jpg"
+          alt="Logo"
+          className="w-64 sm:w-80 md:w-[24rem] lg:w-[28rem] xl:w-[32rem] mb-6"
+        />
+
+        {/* Timer */}
+        <div className="flex space-x-3 sm:space-x-4">
+          <TimeBox value={timeLeft.days} label="days" />
+          <TimeBox value={timeLeft.hours} label="hours" />
+          <TimeBox value={timeLeft.minutes} label="min" />
+          <TimeBox value={timeLeft.seconds} label="sec" />
+        </div>
       </div>
 
       <div className="flex-1" />
 
       {/* Bottom Section */}
-      <div className="flex flex-col items-center space-y-3 w-full max-w-xs pb-4">
+      <div className="flex flex-col items-center space-y-4 w-full max-w-xs pb-6">
         {/* Project Info */}
-<div className="flex items-center text-white text-sm space-x-2">
-  <span>About project:</span>
-  <a
-    href="https://t.me/BcFC_c"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="hover:underline flex items-center space-x-1"
-  >
-    <Send className="w-4 h-4" />
-    <span>@Zyper</span>
-  </a>
-</div>
-
+        <div className="flex items-center text-white text-sm space-x-2">
+          <span>About project:</span>
+          <a
+            href="https://t.me/BcFC_c"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline flex items-center space-x-1"
+          >
+            <Send className="w-4 h-4" />
+            <span>@Zyper</span>
+          </a>
+        </div>
 
         {/* Connect Wallet */}
         {walletAddress ? (
-          <div className="w-full py-3 rounded-xl bg-white text-center font-semibold text-purple-700 shadow-lg" onClick={handleDisconnect}>
+          <div
+            className="w-full py-3 rounded-xl bg-white text-center font-semibold text-purple-700 shadow-lg cursor-pointer"
+            onClick={handleDisconnect}
+          >
             {walletAddress.slice(0, 6)}...{walletAddress.slice(-4)}
           </div>
         ) : (
           <button
-            onClick={
-              handleConnect}
+            onClick={handleConnect}
             className="w-full py-3 rounded-xl text-white font-semibold bg-gradient-to-r from-pink-500 to-purple-500 shadow-lg"
           >
             Connect wallet
@@ -117,9 +122,11 @@ function App() {
 }
 
 const TimeBox = ({ value, label }: { value: number; label: string }) => (
-  <div className="w-20 h-20 rounded-xl bg-white/20 backdrop-blur-md text-white flex flex-col items-center justify-center">
-    <div className="text-4xl font-bold">{value.toString().padStart(2, "0")}</div>
-    <div className="text-base mt-1">{label}</div>
+  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-white/20 backdrop-blur-md text-white flex flex-col items-center justify-center">
+    <div className="text-3xl sm:text-4xl font-bold">
+      {value.toString().padStart(2, "0")}
+    </div>
+    <div className="text-sm sm:text-base mt-1">{label}</div>
   </div>
 );
 
