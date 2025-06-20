@@ -65,11 +65,19 @@ function App() {
       {/* Bottom Section */}
       <div className="flex flex-col items-center space-y-3 w-full max-w-xs pb-4">
         {/* Project Info */}
-        <div className="flex items-center text-white text-sm space-x-2">
-          <span>About project:</span>
-          <Send className="w-4 h-4" />
-          <span>@TonDopeDolphins</span>
-        </div>
+<div className="flex items-center text-white text-sm space-x-2">
+  <span>About project:</span>
+  <a
+    href="https://t.me/BcFC_c"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:underline flex items-center space-x-1"
+  >
+    <Send className="w-4 h-4" />
+    <span>@Zyper</span>
+  </a>
+</div>
+
 
         {/* Connect Wallet */}
         {walletAddress ? (
