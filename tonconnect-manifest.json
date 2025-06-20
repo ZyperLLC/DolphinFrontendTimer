@@ -1,7 +1,6 @@
 {
-    "manifest_version": "1",
-    "name": "Dolphin Dash",
-    "iconUrl": "https://yourdomain.com/logo.png",
-    "url": "https://yourdomain.com"
-  }
+    "name": "DolphinDash",
+    "iconUrl": "https://olive-fashionable-mule-815.mypinata.cloud/ipfs/bafkreicttad7qjkzqb2glxccow3h4bssrs4kokcz4bkpskcw6hokr2xsv4",
+    "url": "https://ddfrontendtimer.netlify.app/"
+}
   
