@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { UserPlus, Copy, Send } from "lucide-react";
 import { TonConnectUI } from "@tonconnect/ui";
+import { handleGetReferralLink } from "./helper/getReferralLink";
 
 const connector = new TonConnectUI({
   manifestUrl: "https://olive-fashionable-mule-815.mypinata.cloud/ipfs/bafkreibeyicm22fqvs3gft7os527dwfkptxy35h57j2gk7jk74btracggq", // 👈 Change this to your real manifest
@@ -92,11 +93,10 @@ function App() {
         {/* Invite + Copy */}
         <div className="flex items-center justify-between w-full space-x-2">
           <div className="flex-grow flex items-center justify-between bg-white/90 text-purple-700 px-4 py-3 rounded-xl shadow-sm">
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2" onClick={handleGetReferralLink}>
               <UserPlus className="w-5 h-5" />
               <span className="text-sm font-medium">Invite friends</span>
             </div>
-            <span className="text-sm font-semibold">0/10</span>
           </div>
 
           <button className="p-3 w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-lg">
