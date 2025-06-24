@@ -1,7 +1,7 @@
 import { postEvent, retrieveLaunchParams } from "@telegram-apps/sdk";
 import axios from "axios";
 import toast from "react-hot-toast";
-5
+
 export const handleGetReferralLink = async () => {
     console.log("Entering Refferal Link preview");
     const {tgWebAppData} = retrieveLaunchParams();
@@ -56,7 +56,7 @@ export const handleGetReferralLink = async () => {
               timeout: 15000
             }
           );
-
+          console.log(await res.data);
           if(res.data && res.data.result.id) {
             postEvent("web_app_send_prepared_message", { id: res.data.result.id });
           } else {
