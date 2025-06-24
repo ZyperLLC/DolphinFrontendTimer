@@ -77,9 +77,9 @@ function App() {
 
         {/* Connect Wallet */}
         {walletAddress ? (
-          <div className="w-full py-3 rounded-xl bg-white text-center font-semibold text-purple-700 shadow-lg" onClick={handleDisconnect}>
+          <button className="w-full cursor-pointer py-3 rounded-xl bg-white text-center font-semibold text-purple-700 shadow-lg" onClick={handleDisconnect}>
             {walletAddress.slice(0, 6)}...{walletAddress.slice(-4)}
-          </div>
+          </button>
         ) : (
           <button
             onClick={

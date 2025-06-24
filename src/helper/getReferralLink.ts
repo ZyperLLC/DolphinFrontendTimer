@@ -3,10 +3,10 @@ import axios from "axios";
 import toast from "react-hot-toast";
 5
 export const handleGetReferralLink = async () => {
-
+    console.log("Entering Refferal Link preview");
     const {tgWebAppData} = retrieveLaunchParams();
     const telegramId = tgWebAppData?.user?.id;
-
+    console.log(telegramId);
     try {
       const button = document.querySelector('button:first-child');
       if (button) {
@@ -18,6 +18,8 @@ export const handleGetReferralLink = async () => {
         const uniqueId = `msg_${telegramId}_${Date.now()}`;
         try {
           const botToken = import.meta.env.VITE_BOT_TOKEN;
+          console.log("BotToken");
+          console.log(botToken);
           if (!botToken) {
             toast.error('Bot token is not configured. Please contact support.');
             return;
