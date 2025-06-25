@@ -22,6 +22,7 @@ export const handleGetReferralLink = async () => {
           console.log(botToken);
           if (!botToken) {
             toast.error('Bot token is not configured. Please contact support.');
+            console.log("Bot token is not configured");
             return;
           }
 
@@ -57,10 +58,12 @@ export const handleGetReferralLink = async () => {
             }
           );
           console.log(await res.data);
-          if(res.data && res.data.result.id) {
+          if(await res.data && await res.data.result.id) {
+            console.log("Sending postevent");
             postEvent("web_app_send_prepared_message", { id: res.data.result.id });
+            console.log("sent post event");
           } else {
-            toast.error('Failed to prepare message. Please try again.');
+            console.log('Failed to prepare message. Please try again.');
           }
         } catch(error) {
           toast.error('Failed to save message. Please try again.');
