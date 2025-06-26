@@ -35,10 +35,7 @@ export const handleGetReferralLink = async () => {
                 id: uniqueId,
                 title: "Ride the wave with Dolphins🐬",
                 input_message_content: {
-                  message_text: `Hey! 👋\n
-                  I just found this super fun Telegram mini-game called Dolphin Dash 🐬 🎮 where you can play, stake NFTs, and win rewards in TON! 💸\n
-                  I’m already in ~ you should totally check it out and race with me! 😎\n Join Dolphin Dash now!
-                  Let’s see whose dolphin is faster! 🐬⚡️`
+                  message_text: `Hey! 👋\nI just found this super fun Telegram mini-game called Dolphin Dash 🐬 🎮 where you can play, stake NFTs, and win rewards in TON! 💸\nI’m already in ~ you should totally check it out and race with me! 😎\n Join Dolphin Dash now! Let’s see whose dolphin is faster! 🐬⚡️`
                 },
                 reply_markup: {
                   inline_keyboard: [
