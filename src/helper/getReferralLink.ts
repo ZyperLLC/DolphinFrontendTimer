@@ -33,16 +33,19 @@ export const handleGetReferralLink = async () => {
               result: {
                 type: "article",
                 id: uniqueId,
-                title: "Meme legends are rising!",
+                title: "Ride the wave with Dolphins🐬",
                 input_message_content: {
-                  message_text: "Meme legends are rising!\nI've entered the Meme Battle Arena—join me and let's push our memes to the top!"
+                  message_text: `Hey! 👋\n
+                  I just found this super fun Telegram mini-game called Dolphin Dash 🐬 🎮 where you can play, stake NFTs, and win rewards in TON! 💸\n
+                  I’m already in ~ you should totally check it out and race with me! 😎\n Join Dolphin Dash now!
+                  Let’s see whose dolphin is faster! 🐬⚡️`
                 },
                 reply_markup: {
                   inline_keyboard: [
                     [
                       {
                         text: "Join Now 🚀",
-                        url: `https://t.me/MemeBattleArenaBot/MemeBattleArena?startapp=${telegramId}`
+                        url: `https://t.me/DolphinDash_bot/DolphinDash`
                       }
                     ]
                   ]
@@ -57,17 +60,13 @@ export const handleGetReferralLink = async () => {
               timeout: 15000
             }
           );
-          console.log(await res.data);
           if(await res.data && await res.data.result.id) {
-            console.log("Sending postevent");
             postEvent("web_app_send_prepared_message", { id: res.data.result.id });
-            console.log("sent post event");
           } else {
             console.log('Failed to prepare message. Please try again.');
           }
         } catch(error) {
           toast.error('Failed to save message. Please try again.');
-          console.log('Error saving inline message:', error);
         }
       } catch (error: unknown) {
         console.error('Backend API Error:', error);

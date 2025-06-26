@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { UserPlus, Copy, Send } from "lucide-react";
 import { TonConnectUI } from "@tonconnect/ui";
 import { handleGetReferralLink } from "./helper/getReferralLink";
+import toast from "react-hot-toast";
 
 const connector = new TonConnectUI({
   manifestUrl: "https://olive-fashionable-mule-815.mypinata.cloud/ipfs/bafkreibeyicm22fqvs3gft7os527dwfkptxy35h57j2gk7jk74btracggq", // 👈 Change this to your real manifest
@@ -51,6 +52,16 @@ function App() {
     connector.disconnect();
   }
 
+  const messageText = `Hey! 👋 I just found this super fun Telegram mini-game called Dolphin Dash 🐬 🎮 where you can play, stake NFTs, and win rewards in TON! 💸\nI’m already in ~ you should totally check it out and race with me!\n 😎 Join Dolphin Dash now! Let’s see whose dolphin is faster! 🐬⚡️\nhttps://t.me/DolphinDash_bot/DolphinDash`;
+
+  const handleCopyUrl = ()=>{
+    navigator.clipboard.writeText(messageText).then(() => {
+      toast.success('Your invite link has been copied to clipboard!');
+    }).catch((err) => {
+      toast.error('Failed to copy to clipboard. Please try again.');
+      console.error('Error copying to clipboard:', err);
+    });
+  }
   return (
     <div
       className="min-h-screen flex flex-col justify-between items-center bg-cover bg-center py-8 px-4"
@@ -99,7 +110,7 @@ function App() {
             </div>
           </div>
 
-          <button className="p-3 w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-lg">
+          <button className="p-3 w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-lg" onClick={handleCopyUrl}>
             <Copy className="w-5 h-5" />
           </button>
         </div>
