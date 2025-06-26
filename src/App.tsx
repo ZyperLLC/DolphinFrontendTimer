@@ -82,8 +82,10 @@ function App() {
         {/* Project Info */}
         <div className="flex items-center text-white text-sm space-x-2">
           <span>About project:</span>
+          <a href="https://t.me/BcFC_c" className="flex gap-2 items-center justify-center">
           <Send className="w-4 h-4" />
           <span>@TonDopeDolphins</span>
+          </a>
         </div>
 
         {/* Connect Wallet */}
@@ -103,12 +105,12 @@ function App() {
 
         {/* Invite + Copy */}
         <div className="flex items-center justify-between w-full space-x-2">
-          <div className="flex-grow flex items-center justify-between bg-white/90 text-purple-700 px-4 py-3 rounded-xl shadow-sm">
-            <button className={`flex-grow flex items-center justify-between px-4 py-3 rounded-xl shadow-sm transition duration-300 ${
-              walletAddress
+          <div className={`flex-grow flex items-center justify-between py-1 rounded-xl shadow-sm
+            ${walletAddress
                 ? "bg-white/90 text-purple-700 cursor-pointer"
                 : "bg-white/40 text-purple-300 cursor-not-allowed opacity-50"
-            }`} onClick={handleGetReferralLink}>
+            }`}>
+            <button className={`flex-grow flex items-center justify-start gap-4 text-xl px-4 py-3 rounded-xl shadow-sm transition duration-300 $} onClick={handleGetReferralLink`}>
               <UserPlus className="w-5 h-5" />
               <span className="text-sm font-medium">Invite friends</span>
             </button>
