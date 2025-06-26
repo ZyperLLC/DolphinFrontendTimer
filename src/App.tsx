@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { UserPlus, Copy, Send } from "lucide-react";
-import { TonConnectUI } from "@tonconnect/ui";
+import { TonConnectUI, toUserFriendlyAddress } from "@tonconnect/ui";
 import { handleGetReferralLink } from "./helper/getReferralLink";
 import toast from "react-hot-toast";
 
@@ -38,7 +38,8 @@ function App() {
   useEffect(() => {
     connector.onStatusChange((wallet) => {
       if (wallet?.account?.address) {
-        setWalletAddress(wallet.account.address);
+        const address =toUserFriendlyAddress(wallet.account.address);
+        setWalletAddress(address);
       } else {
         setWalletAddress(null);
       }
@@ -107,12 +108,12 @@ function App() {
         <div className="flex items-center justify-between w-full space-x-2">
           <div className={`flex-grow flex items-center justify-between py-1 rounded-xl shadow-sm
             ${walletAddress
-                ? "bg-white/90 text-purple-700 cursor-pointer"
+                ? "bg-white font-bolder text-purple-700 cursor-pointer"
                 : "bg-white/40 text-purple-300 cursor-not-allowed opacity-50"
             }`}>
-            <button className={`flex-grow flex items-center justify-start gap-4 text-xl px-4 py-3 rounded-xl shadow-sm transition duration-300 $} onClick={handleGetReferralLink`}>
+            <button className={`flex-grow flex items-center justify-start gap-4 text-xl px-4 py-3 rounded-xl shadow-sm transition duration-300`} onClick={handleGetReferralLink}>
               <UserPlus className="w-5 h-5" />
-              <span className="text-sm font-medium">Invite friends</span>
+              <span className="text-[1.15rem] font-medium">Invite friends</span>
             </button>
           </div>
 
