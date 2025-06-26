@@ -48,7 +48,9 @@ export const handleGetReferralLink = async () => {
                   ]
                 }
               },
-              allow_user_chats: true
+              allow_user_chats: true,
+              allow_group_chats:true,  
+              allow_channel_chats: true
             },
             {
               headers: {
