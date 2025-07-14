@@ -9,7 +9,7 @@ const connector = new TonConnectUI({
 });
 
 function App() {
-  const deadline = new Date("2025-07-15T00:00:00").getTime();
+  const deadline = new Date("2025-07-14T18:30:00Z").getTime();
   const [timeLeft, setTimeLeft] = useState(getTimeRemaining());
   const [walletAddress, setWalletAddress] = useState<string | null>(null);
 
